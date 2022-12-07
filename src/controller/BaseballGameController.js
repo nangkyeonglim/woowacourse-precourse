@@ -4,6 +4,7 @@ const OutputView = require("../view/OutputView");
 const ComputerNumberMaker = require('../utils/ComputerNumberMaker');
 const RandomNumberGenerator = require('../utils/RandomNumberGenerator');
 const Validator = require("../utils/Validator");
+const { GAME_COMMAND, NUMBER } = require("../constants/constants");
 
 class BaseballGameController {
   #baseballGame;
@@ -14,7 +15,7 @@ class BaseballGameController {
   }    
 
   #makebaseBallGamePhase() {
-    this.#baseballGame = new BaseballGame(ComputerNumberMaker.makeComputerNumber(3, RandomNumberGenerator.generate));
+    this.#baseballGame = new BaseballGame(ComputerNumberMaker.makeComputerNumber(NUMBER.length, RandomNumberGenerator.generate));
     this.#readUserNumberPhase();
   }
 
@@ -39,7 +40,7 @@ class BaseballGameController {
 
   #retryPhase(gameCommand) {
     Validator.checkGameCommand(gameCommand);
-    if (gameCommand === '1') {
+    if (gameCommand === GAME_COMMAND.retry) {
       this.#makebaseBallGamePhase();
       return;
     }OutputView.close();
