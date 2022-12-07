@@ -11,7 +11,8 @@ class Validator {
   }
 
   static #isNumber(number) {
-
+    const check = /^[0-9]+$/; 
+    return check.test(number);
   }
 
   static #hasZero(number) {
