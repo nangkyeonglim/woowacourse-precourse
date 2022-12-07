@@ -28,7 +28,7 @@ class Validator {
   }
 
   static #isValidCommand(gameCommand) {
-
+    return gameCommand === '1' || gameCommand === '2';
   }
 }
 
