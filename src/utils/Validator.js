@@ -16,7 +16,7 @@ class Validator {
   }
 
   static #hasZero(number) {
-
+    return number.includes(0);
   }
 
   static #isDuplicated(number) {
