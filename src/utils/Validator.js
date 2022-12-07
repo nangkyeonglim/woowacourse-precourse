@@ -24,7 +24,7 @@ class Validator {
   }
 
   static #isRangeOfLength(number) {
-
+    return number.length === 3;
   }
 
   static #isValidCommand(gameCommand) {
