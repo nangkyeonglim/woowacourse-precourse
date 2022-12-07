@@ -16,6 +16,10 @@ const OutputView = {
     if (strike > 0) ballAndStirke.push(`${strike}스트라이크`);
 
     Console.print(ballAndStirke.join(' '))
+  },
+
+  printEndMessage() {
+    Console.print('3개의 숫자를 모두 맞히셨습니다! 게임 종료\n');
   }
 };
 
