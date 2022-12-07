@@ -10,3 +10,5 @@ const ComputerNumberMaker = {
     return computer;
   }
 }
+
+module.exports = ComputerNumberMaker;
