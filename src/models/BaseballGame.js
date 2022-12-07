@@ -1,3 +1,5 @@
+const { NUMBER } = require("../constants/constants");
+
 class BaseballGame {
   #computerNumber;
   #gameEnd;
@@ -21,7 +23,7 @@ class BaseballGame {
   }
 
   changeGameEndStatus(strike) {
-    if (strike === 3) this.#gameEnd = true;
+    if (strike === NUMBER.length) this.#gameEnd = true;
   }
 
   isGameEnd() {
