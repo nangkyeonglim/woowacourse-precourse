@@ -16,6 +16,10 @@ class BaseballGameController {
     this.#baseballGame = new BaseballGame(ComputerNumberMaker.makeComputerNumber(3, RandomNumberGenerator.generate));
     this.readUserNumberPhase();
   }
+
+  readUserNumberPhase() {
+    InputView.readUserNumber(this.answerCheckPhase.bind(this));
+  }
 }
 
 module.exports = BaseballGameController;
