@@ -10,37 +10,37 @@ class BaseballGameController {
 
   start() {
     OutputView.printIntialMessage();
-    this.makebaseBallGamePhase();
+    this.#makebaseBallGamePhase();
   }    
 
-  makebaseBallGamePhase() {
+  #makebaseBallGamePhase() {
     this.#baseballGame = new BaseballGame(ComputerNumberMaker.makeComputerNumber(3, RandomNumberGenerator.generate));
-    this.readUserNumberPhase();
+    this.#readUserNumberPhase();
   }
 
-  readUserNumberPhase() {
-    InputView.readUserNumber(this.answerCheckPhase.bind(this));
+  #readUserNumberPhase() {
+    InputView.readUserNumber(this.#answerCheckPhase.bind(this));
   }
 
-  answerCheckPhase(userNumber) {
+  #answerCheckPhase(userNumber) {
     Validator.checkUserNumber(userNumber);
     OutputView.printCompareResult(this.#baseballGame.compareNumber(userNumber));
     if (this.#baseballGame.isGameEnd()) {
       OutputView.printEndMessage();
-      this.readGameCommandPhase();
+      this.#readGameCommandPhase();
       return;
     }
-    this.readUserNumberPhase();
+    this.#readUserNumberPhase();
   }
 
-  readGameCommandPhase() {
-    InputView.readGameCommand(this.retryPhase.bind(this));
+  #readGameCommandPhase() {
+    InputView.readGameCommand(this.#retryPhase.bind(this));
   }
 
-  retryPhase(gameCommand) {
+  #retryPhase(gameCommand) {
     Validator.checkGameCommand(gameCommand);
     if (gameCommand === '1') {
-      this.makebaseBallGamePhase();
+      this.#makebaseBallGamePhase();
       return;
     }OutputView.close();
   }
