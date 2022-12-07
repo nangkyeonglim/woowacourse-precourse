@@ -34,6 +34,13 @@ class BaseballGameController {
   readGameCommandPhase() {
     InputView.readGameCommand(this.retryPhase.bind(this));
   }
+
+  retryPhase(gameCommand) {
+    if (gameCommand === '1') {
+      this.makebaseBallGamePhase();
+      return;
+    }OutputView.close();
+  }
 }
 
 module.exports = BaseballGameController;
