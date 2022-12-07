@@ -20,6 +20,17 @@ class BaseballGameController {
   readUserNumberPhase() {
     InputView.readUserNumber(this.answerCheckPhase.bind(this));
   }
+
+  answerCheckPhase(userNumber) {
+    OutputView.printCompareResult(this.#baseballGame.compareNumber(userNumber));
+    if (this.#baseballGame.isGameEnd()) {
+      OutputView.printEndMessage();
+      this.readGameCommandPhase();
+      return;
+    }
+    this.readUserNumberPhase();
+  }
+
 }
 
 module.exports = BaseballGameController;
