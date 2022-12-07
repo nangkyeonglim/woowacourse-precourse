@@ -1,28 +1,31 @@
 class BaseballGame {
   #computerNumber;
-  #result;
+  #gameEnd;
 
   constructor(computerNumber) {
     this.#computerNumber = computerNumber;
-    this.#result = {
-      strike: 0,
-      ball: 0,
-    }
+    this.#gameEnd = false;
   }
   
   compareNumber(userNumber) {
-    userNumber.forEach((num, index) => {
-      if (num === this.#computerNumber[index]) this.#result.strike += 1;
-      else if (this.#computerNumber.includes(num)) this.#result.ball += 1;
+    const result = {
+      strike: 0,
+      ball: 0,
+    };
+    [...userNumber].map(char => Number(char)).forEach((num, index) => {
+      if (num === this.#computerNumber[index]) result.strike += 1;
+      else if (this.#computerNumber.includes(num)) result.ball += 1;
     });
+    this.changeGameEndStatus(result.strike);
+    return result;
+  }
+
+  changeGameEndStatus(strike) {
+    if (strike === 3) this.#gameEnd = true;
   }
 
   isGameEnd() {
-    return this.#result.strike === 3;
-  }
-  
-  getResult() {
-    return this.#result;
+    return this.#gameEnd;
   }
 }
 
