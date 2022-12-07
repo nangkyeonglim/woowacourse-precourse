@@ -11,6 +11,11 @@ class BaseballGameController {
     OutputView.printIntialMessage();
     this.makebaseBallGamePhase();
   }    
+
+  makebaseBallGamePhase() {
+    this.#baseballGame = new BaseballGame(ComputerNumberMaker.makeComputerNumber(3, RandomNumberGenerator.generate));
+    this.readUserNumberPhase();
+  }
 }
 
 module.exports = BaseballGameController;
