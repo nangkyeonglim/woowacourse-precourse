@@ -35,4 +35,5 @@ module.exports = {
   GAME_RESULT, 
   NUMBER, 
   MESSAGE, 
+  ERROR,
 };
