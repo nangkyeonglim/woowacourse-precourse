@@ -16,6 +16,10 @@ class BaseballGame {
       else if (this.#computerNumber.includes(num)) this.#result.ball += 1;
     });
   }
+
+  isGameEnd() {
+    return this.#result.strike === 3;
+  }
 }
 
 module.exports = BaseballGame;
