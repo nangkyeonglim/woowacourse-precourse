@@ -20,7 +20,7 @@ class Validator {
   }
 
   static #isDuplicated(number) {
-
+    return new Set(number).size !== number.length;
   }
 
   static #isRangeOfLength(number) {
