@@ -20,6 +20,10 @@ class BaseballGame {
   isGameEnd() {
     return this.#result.strike === 3;
   }
+  
+  getResult() {
+    return this.#result;
+  }
 }
 
 module.exports = BaseballGame;
