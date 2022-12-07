@@ -7,7 +7,7 @@ class Validator {
   }
 
   static checkGameCommand(gameCommand) {
-    
+    if (!this.#isValidCommand) throw new Error('[ERROR] 재시작: 1, 종료: 2 만 입력가능합니다')
   }
 
   static #isNumber(number) {
