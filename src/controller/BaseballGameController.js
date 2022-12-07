@@ -31,6 +31,9 @@ class BaseballGameController {
     this.readUserNumberPhase();
   }
 
+  readGameCommandPhase() {
+    InputView.readGameCommand(this.retryPhase.bind(this));
+  }
 }
 
 module.exports = BaseballGameController;
