@@ -3,6 +3,7 @@ const InputView = require("../view/InputView");
 const OutputView = require("../view/OutputView");
 const ComputerNumberMaker = require('../utils/ComputerNumberMaker');
 const RandomNumberGenerator = require('../utils/RandomNumberGenerator');
+const Validator = require("../utils/Validator");
 
 class BaseballGameController {
   #baseballGame;
@@ -22,6 +23,7 @@ class BaseballGameController {
   }
 
   answerCheckPhase(userNumber) {
+    Validator.checkUserNumber(userNumber);
     OutputView.printCompareResult(this.#baseballGame.compareNumber(userNumber));
     if (this.#baseballGame.isGameEnd()) {
       OutputView.printEndMessage();
@@ -36,6 +38,7 @@ class BaseballGameController {
   }
 
   retryPhase(gameCommand) {
+    Validator.checkGameCommand(gameCommand);
     if (gameCommand === '1') {
       this.makebaseBallGamePhase();
       return;
