@@ -1,21 +1,20 @@
 class BaseballGame {
   #computerNumber;
+  #result;
 
   constructor(computerNumber) {
     this.#computerNumber = computerNumber;
+    this.#result = {
+      strike: 0,
+      ball: 0,
+    }
   }
   
   compareNumber(userNumber) {
-    const result = {
-      strike: 0,
-      ball: 0,
-    };
-
     userNumber.forEach((num, index) => {
-      if (num === this.#computerNumber[index]) result.strike += 1;
-      else if (this.#computerNumber.includes(num)) result.ball += 1;
+      if (num === this.#computerNumber[index]) this.#result.strike += 1;
+      else if (this.#computerNumber.includes(num)) this.#result.ball += 1;
     });
-    return result;
   }
 }
 
