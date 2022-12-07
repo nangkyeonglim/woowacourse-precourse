@@ -1,0 +1,16 @@
+const BaseballGame = require("../models/BaseballGame");
+const InputView = require("../view/InputView");
+const OutputView = require("../view/OutputView");
+const ComputerNumberMaker = require('../utils/ComputerNumberMaker');
+const RandomNumberGenerator = require('../utils/RandomNumberGenerator');
+
+class BaseballGameController {
+  #baseballGame;
+
+  start() {
+    OutputView.printIntialMessage();
+    this.makebaseBallGamePhase();
+  }    
+}
+
+module.exports = BaseballGameController;
