@@ -29,6 +29,10 @@ class BridgeGame {
     return this.#result;
   }
 
+  getAttempts() {
+    return this.#attempts;
+  }
+
   isGameEnd() {
     return this.#currentPosition === this.#bridge.length - 1;
   }
