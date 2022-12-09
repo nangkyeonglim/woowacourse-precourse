@@ -1,3 +1,4 @@
+const { LOTTO, GRADE } = require('../constants/constants');
 const LottoNumberGeneartor = require('../utils/LottoNumberGenerator');
 const Lotto = require('./Lotto');
 
@@ -5,11 +6,11 @@ class LottoGame {
   #purchaseMoney;
   #lottos = [];
   #grade = new Map([
-    ['fifth', 0],
-    ['fourth', 0],
-    ['third', 0],
-    ['second', 0],
-    ['first', 0],
+    [GRADE.fifth.name, 0],
+    [GRADE.fourth.name, 0],
+    [GRADE.third.name, 0],
+    [GRADE.second.name, 0],
+    [GRADE.first.name, 0],
   ]);
 
   constructor(purchaseMoney) {
@@ -17,7 +18,7 @@ class LottoGame {
   }
 
   issueLottos() {
-    while (this.#lottos.length !== this.#purchaseMoney / 1000)
+    while (this.#lottos.length !== this.#purchaseMoney / LOTTO.price)
       this.#lottos.push(new Lotto(LottoNumberGeneartor.generate()));
   }
 
@@ -45,11 +46,11 @@ class LottoGame {
   }
 
   calculateProfitRate() {
-    let prize = 0;
+    let totalPrize = 0;
     this.#grade.forEach((gradeCount, grade) => {
-      prize += gradeCount * GRADE[grade].prize;
+      totalPrize += gradeCount * GRADE[grade].prize;
     });
-    return (prize / this.#purchaseMoney) * 100;
+    return (totalPrize / this.#purchaseMoney) * 100;
   }
 }
 
