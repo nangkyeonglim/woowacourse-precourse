@@ -1,8 +1,13 @@
 const { Random } = require('@woowacourse/mission-utils');
+const { LOTTO } = require('../constants/constants');
 
 const LottoNumberGeneartor = {
   generate() {
-    return Random.pickUniqueNumbersInRange(1, 45, 6);
+    return Random.pickUniqueNumbersInRange(
+      LOTTO.min,
+      LOTTO.max,
+      LOTTO.numberCount
+    );
   },
 };
 
