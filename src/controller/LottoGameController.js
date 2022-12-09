@@ -39,6 +39,11 @@ class LottoGameController {
     OutputView.printResultTitle();
     OutputView.printWinningResult(this.#lottoGame.getGrade());
     OutputView.printProfitRate(this.#lottoGame.calculateProfitRate());
+    this.#end();
+  }
+
+  #end() {
+    OutputView.end();
   }
 }
 
