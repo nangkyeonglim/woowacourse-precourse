@@ -35,7 +35,10 @@ class LottoGame {
     );
   }
 
-  countGrade(grade) {}
+  countGrade(grade) {
+    if (grade === undefined) return;
+    this.#grade.set(grade, this.#grade.get(grade) + 1);
+  }
 }
 
 module.exports = LottoGame;
