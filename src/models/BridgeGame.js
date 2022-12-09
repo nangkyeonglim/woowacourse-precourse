@@ -1,13 +1,27 @@
 class BridgeGame {
   #bridge; // ['U', 'D', 'D']
   #currentPosition = 0;
+  #result;
 
   constructor(bridge) {
     this.#bridge = bridge;
+    this.#result = new Map([
+      ['U', []],
+      ['D', []],
+    ]);
   }
 
   isCorrectMoving(moving) {
     return this.#bridge[this.#currentPosition] === moving;
+  }
+
+  updateResult(moving) {
+    Array.from(this.#result.keys())
+      .filter((direction) => direction !== moving)
+      .forEach((direction) => this.#result.get(direction).push(' '));
+    if (this.isCorrectMoving(moving))
+      return this.#result.get(direction).push('O');
+    this.#result.get(direction).push('X');
   }
   /**
    * 사용자가 칸을 이동할 때 사용하는 메서드
