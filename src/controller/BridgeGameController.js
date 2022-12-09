@@ -31,9 +31,9 @@ class BridgeGameController {
     this.#bridgeGame.updateResult(moving);
     OutputView.printMap(this.#bridgeGame.getResult());
     if (this.#bridgeGame.isCorrectMoving(moving)) {
-      this.#correctAnswerPhase();
+      return this.#correctAnswerPhase();
     }
-    //TODO: 오답 페이즈
+    this.#readGameCommandPhase();
   }
 
   #correctAnswerPhase() {
@@ -43,6 +43,10 @@ class BridgeGameController {
     }
     this.#bridgeGame.move();
     this.#readMovingPhase();
+  }
+
+  #readGameCommandPhase() {
+    InputView.readGameCommand(this.aa.bind(this));
   }
 }
 
