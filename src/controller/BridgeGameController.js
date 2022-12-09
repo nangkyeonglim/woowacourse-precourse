@@ -1,4 +1,4 @@
-const BridgeMaker = require('../BridgeMaker');
+const { makeBridge } = require('../BridgeMaker');
 const BridgeGame = require('../models/BridgeGame');
 const BridgeRandomNumberGenerator = require('../utils/BridgeRandomNumberGenerator');
 const InputView = require('../views/InputView');
@@ -18,7 +18,7 @@ class BridgeGameController {
 
   #createBridgeGame(size) {
     this.#bridgeGame = new BridgeGame(
-      BridgeMaker(size, BridgeRandomNumberGenerator.generate())
+      makeBridge(Number(size), BridgeRandomNumberGenerator.generate())
     );
     this.#readMovingPhase();
   }
