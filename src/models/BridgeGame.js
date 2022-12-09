@@ -43,6 +43,10 @@ class BridgeGame {
   retry() {
     this.#attempts += 1;
     this.#currentPosition = 0;
+    this.#result = new Map([
+      ['U', []],
+      ['D', []],
+    ]);
   }
 }
 
