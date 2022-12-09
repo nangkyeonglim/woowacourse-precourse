@@ -11,7 +11,12 @@ const OutputView = {
     });
   },
 
-  printResult() {},
+  printResult(resultMap, success, attempts) {
+    Console.print('최종 게임 결과');
+    this.printMap(resultMap);
+    Console.print(`게임 성공 여부: ${success ? '성공' : '실패'}`);
+    Console.print(`총 시도한 횟수: ${attempts}`);
+  },
 
   close() {
     Console.close();
