@@ -9,9 +9,8 @@ const RESULT_MAP = Object.freeze({
   correct: 'O',
   wrong: 'X',
   empty: ' ',
-  prefix: '[ ',
-  postfix: ' ]',
   seperator: ' | ',
+  printOneLine: (line) => `[ ${line} ]`,
 });
 
 const INPUT_MESSAGE = Object.freeze({
