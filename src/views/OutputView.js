@@ -22,7 +22,7 @@ const OutputView = {
   },
 
   printWinningResult(result) {
-    result.forEach((grade) => {
+    result.forEach((gradeCount, grade) => {
       Console.print(PRINT_MESSAGE.winningResult(grade, gradeCount));
     });
   },
