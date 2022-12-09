@@ -1,16 +1,17 @@
 const { Console } = require('@woowacourse/mission-utils');
+const { READ_MESSAGE } = require('../constants/constants');
 
 const InputView = {
   readPurchaseMoney(callback) {
-    Console.readLine('구입금액을 입력해 주세요.\n', callback);
+    Console.readLine(READ_MESSAGE.purchaseMoney, callback);
   },
 
   readWinningNumber(callback) {
-    Console.readLine('당첨 번호를 입력해 주세요.\n', callback);
+    Console.readLine(READ_MESSAGE.winningNumber, callback);
   },
 
   readBonusNumber(callback) {
-    Console.readLine('보너스 번호를 입력해 주세요.\n', callback);
+    Console.readLine(READ_MESSAGE.bonusNumber, callback);
   },
 };
 
