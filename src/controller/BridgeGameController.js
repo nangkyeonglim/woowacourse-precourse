@@ -31,9 +31,18 @@ class BridgeGameController {
     this.#bridgeGame.updateResult(moving);
     OutputView.printMap(this.#bridgeGame.getResult());
     if (this.#bridgeGame.isCorrectMoving(moving)) {
-      // TODO: 정답 페이즈
+      this.#correctAnswerPhase();
     }
     //TODO: 오답 페이즈
+  }
+
+  #correctAnswerPhase() {
+    if (this.#bridgeGame.isGameEnd()) {
+      OutputView.printResult(this.#bridgeGame.getResult());
+      return OutputView.close();
+    }
+    this.#bridgeGame.move();
+    this.#readMovingPhase();
   }
 }
 
