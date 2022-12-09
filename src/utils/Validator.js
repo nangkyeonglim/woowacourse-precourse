@@ -11,7 +11,10 @@ class Validator {
   static #isRangeOfBridgeSize(size) {
     return size >= 3 && size <= 20;
   }
-  static #isValidMoving(moving) {}
+
+  static #isValidMoving(moving) {
+    return moving === 'U' || moving === 'D';
+  }
   static #isValidGameCommand(gameCommand) {}
 }
 
