@@ -17,7 +17,9 @@ class Lotto {
       .length;
   }
 
-  hasBonusNumber(bonusNumber) {}
+  hasBonusNumber(bonusNumber) {
+    return this.#numbers.includes(bonusNumber);
+  }
 
   calculateGrade(winningNumber, bonusNumber) {}
 }
