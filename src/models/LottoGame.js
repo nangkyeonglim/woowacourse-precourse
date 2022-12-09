@@ -13,6 +13,10 @@ class LottoGame {
     while (this.#lottos.length !== this.#purchaseMoney / 1000)
       this.#lottos.push(new Lotto(LottoNumberGeneartor.generate()));
   }
+
+  getLottos() {
+    return this.#lottos.map((lotto) => lotto.getNumbers());
+  }
 }
 
 module.exports = LottoGame;
