@@ -23,6 +23,9 @@ class BridgeGame {
       return this.#result.get(direction).push('O');
     this.#result.get(direction).push('X');
   }
+  getResult() {
+    return this.#result;
+  }
   /**
    * 사용자가 칸을 이동할 때 사용하는 메서드
    * <p>
