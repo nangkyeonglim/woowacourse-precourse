@@ -16,7 +16,14 @@ class BridgeGameController {
 
   #createBridgeGame(size) {
     new BridgeGame(BridgeMaker(size, BridgeRandomNumberGenerator.generate()));
+    this.#readMovingPhase();
   }
+
+  #readMovingPhase() {
+    InputView.readMoving(this.#aa.bind(this));
+  }
+
+  #aa(moving) {}
 }
 
 module.exports = BridgeGameController;
