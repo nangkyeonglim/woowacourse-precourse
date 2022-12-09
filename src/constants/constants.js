@@ -2,6 +2,7 @@ const LOTTO = Object.freeze({
   min: 1,
   max: 45,
   numberCount: 6,
+  price: 1_000,
 });
 
 const GRADE = {
