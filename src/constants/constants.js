@@ -1,3 +1,8 @@
+const BRIDGE = Object.freeze({
+  min: 3,
+  max: 20,
+});
+
 const COMMAND = Object.freeze({
   retry: 'R',
   quit: 'Q',
@@ -26,9 +31,18 @@ const OUTPUT_MESSAGE = Object.freeze({
   attempts: (attempts) => `총 시도한 횟수: ${attempts}`,
 });
 
+const ERROR = {
+  isNotNumber: '[ERROR] 숫자만 입력가능합니다.',
+  invalidRangeOfBridgeSize: `[ERROR] ${BRIDGE.min} 부터 ${BRIDGE.max} 사이의 길이로만 생성 가능합니다.`,
+  invalidMoving: `[ERROR] 이동할 칸은 위: ${COMMAND.up}, 아래: ${COMMAND.down}만 입력 가능합니다.`,
+  invalidGameCommand: `[ERROR] 재시도: ${COMMAND.retry}, 종료: ${COMMAND.quit}만 입력 가능합니다.`,
+};
+
 module.exports = {
+  BRIDGE,
   COMMAND,
   RESULT_MAP,
   INPUT_MESSAGE,
   OUTPUT_MESSAGE,
+  ERROR,
 };
