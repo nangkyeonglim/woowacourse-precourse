@@ -32,6 +32,13 @@ class LottoGameController {
       this.winningLotto.getNumbers(),
       bonusNumber
     );
+    this.#handlePrintGameResultPhase();
+  }
+
+  #handlePrintGameResultPhase() {
+    OutputView.printResultTitle();
+    OutputView.printWinningResult(this.#lottoGame.getGrade());
+    OutputView.printProfitRate(this.#lottoGame.calculateProfitRate());
   }
 }
 
