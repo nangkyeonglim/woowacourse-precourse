@@ -5,6 +5,8 @@ const InputView = require('../views/InputView');
 const OutputView = require('../views/OutputView');
 
 class BridgeGameController {
+  #bridgeGame;
+
   start() {
     OutputView.printInitialMessage();
     this.#readBridgeSizePhase();
@@ -15,15 +17,24 @@ class BridgeGameController {
   }
 
   #createBridgeGame(size) {
-    new BridgeGame(BridgeMaker(size, BridgeRandomNumberGenerator.generate()));
+    this.#bridgeGame = new BridgeGame(
+      BridgeMaker(size, BridgeRandomNumberGenerator.generate())
+    );
     this.#readMovingPhase();
   }
 
   #readMovingPhase() {
-    InputView.readMoving(this.#aa.bind(this));
+    InputView.readMoving(this.#checkAnswerPhase.bind(this));
   }
 
-  #aa(moving) {}
+  #checkAnswerPhase(moving) {
+    this.#bridgeGame.updateResult(moving);
+    OutputView.printMap(this.#bridgeGame.getResult());
+    if (this.#bridgeGame.isCorrectMoving(moving)) {
+      // TODO: 정답 페이즈
+    }
+    //TODO: 오답 페이즈
+  }
 }
 
 module.exports = BridgeGameController;
