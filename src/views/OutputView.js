@@ -12,6 +12,7 @@ const OutputView = {
         RESULT_MAP.printOneLine(directionMap.join(RESULT_MAP.seperator))
       );
     });
+    this.printNewLine();
   },
 
   printResult(resultMap, success, attempts) {
@@ -19,6 +20,10 @@ const OutputView = {
     this.printMap(resultMap);
     Console.print(OUTPUT_MESSAGE.success(success));
     Console.print(OUTPUT_MESSAGE.attempts(attempts));
+  },
+
+  printNewLine() {
+    Console.print('');
   },
 
   close() {

@@ -21,6 +21,7 @@ class BridgeGameController {
     this.#bridgeGame = new BridgeGame(
       makeBridge(Number(size), BridgeRandomNumberGenerator.generate)
     );
+    OutputView.printNewLine();
     this.#readMovingPhase();
   }
 
