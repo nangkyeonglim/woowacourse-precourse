@@ -11,7 +11,7 @@ class LottoGameController {
   }
 
   #handleIssueLottoPhase(purchaseMoney) {
-    this.#lottoGame = new LottoGame(purchaseMoney);
+    this.#lottoGame = new LottoGame(Number(purchaseMoney));
     this.#lottoGame.issueLottos();
     OutputView.printLottoPurchaseCount(this.#lottoGame.getLottosCount());
     OutputView.printLottos(this.#lottoGame.getLottos());
@@ -19,18 +19,18 @@ class LottoGameController {
   }
 
   #readWinningNumberPhase() {
-    InputView.readWinningNumber(this.#readBonusNumberPhase);
+    InputView.readWinningNumber(this.#readBonusNumberPhase.bind(this));
   }
 
   #readBonusNumberPhase(winningNumber) {
-    this.winningLotto = new Lotto(winningNumber);
-    InputView.readBonusNumber(this.#handleCalculateResultPhase);
+    this.winningLotto = new Lotto(winningNumber.split(',').map(Number));
+    InputView.readBonusNumber(this.#handleCalculateResultPhase.bind(this));
   }
 
   #handleCalculateResultPhase(bonusNumber) {
     this.#lottoGame.calculateWinningResult(
       this.winningLotto.getNumbers(),
-      bonusNumber
+      Number(bonusNumber)
     );
     this.#handlePrintGameResultPhase();
   }
