@@ -15,7 +15,10 @@ class Validator {
   static #isValidMoving(moving) {
     return moving === 'U' || moving === 'D';
   }
-  static #isValidGameCommand(gameCommand) {}
+
+  static #isValidGameCommand(gameCommand) {
+    return gameCommand === 'R' || gameCommand === 'Q';
+  }
 }
 
 module.exports = Validator;
