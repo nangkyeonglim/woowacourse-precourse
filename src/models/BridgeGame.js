@@ -1,8 +1,13 @@
 class BridgeGame {
-  #bridge;
+  #bridge; // ['U', 'D', 'D']
+  #currentPosition = 0;
 
   constructor(bridge) {
     this.#bridge = bridge;
+  }
+
+  isCorrectMoving(moving) {
+    return this.#bridge[this.#currentPosition] === moving;
   }
   /**
    * 사용자가 칸을 이동할 때 사용하는 메서드
