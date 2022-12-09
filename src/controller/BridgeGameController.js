@@ -38,8 +38,7 @@ class BridgeGameController {
 
   #correctAnswerPhase() {
     if (this.#bridgeGame.isGameEnd()) {
-      OutputView.printResult(this.#bridgeGame.getResult());
-      return OutputView.close();
+      return this.#handleGameEndPhase(true);
     }
     this.#bridgeGame.move();
     this.#readMovingPhase();
@@ -54,7 +53,15 @@ class BridgeGameController {
       this.#bridgeGame.retry();
       return this.#readMovingPhase();
     }
-    OutputView.printResult(this.#bridgeGame.getResult());
+    this.#handleGameEndPhase(false);
+  }
+
+  #handleGameEndPhase(success) {
+    OutputView.printResult(
+      this.#bridgeGame.getResult(),
+      success,
+      this.#bridgeGame.getAttempts()
+    );
     return OutputView.close();
   }
 }
