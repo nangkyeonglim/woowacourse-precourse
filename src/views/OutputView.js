@@ -10,6 +10,10 @@ const OutputView = {
       Console.print(`[${lotto.join(', ')}]`);
     });
   },
+
+  printResultTitle() {
+    Console.print(`당첨통계\n---`);
+  },
 };
 
 module.exports = OutputView;
