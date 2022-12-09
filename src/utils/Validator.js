@@ -1,5 +1,9 @@
 class Validator {
-  static checkBridgeSize(size) {}
+  static checkBridgeSize(size) {
+    if (!this.#isNumber(size)) throw new Error();
+    if (!this.#isRangeOfBridgeSize(size)) throw new Error();
+  }
+
   static checkMoving(moving) {}
   static checkGameCommand(gameCommand) {}
 
