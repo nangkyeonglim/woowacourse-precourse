@@ -40,15 +40,15 @@ const GRADE = {
 
 const READ_MESSAGE = Object.freeze({
   purchaseMoney: '구입금액을 입력해 주세요.\n',
-  winningNumber: '당첨 번호를 입력해 주세요.\n',
-  bonusNumber: '보너스 번호를 입력해 주세요.\n',
+  winningNumber: '\n당첨 번호를 입력해 주세요.\n',
+  bonusNumber: '\n보너스 번호를 입력해 주세요.\n',
 });
 
 const PRINT_MESSAGE = Object.freeze({
-  lottoPurchaseCount: (count) => `${count}개를 구매했습니다.`,
+  lottoPurchaseCount: (count) => `\n${count}개를 구매했습니다.`,
   lottos: (lotto) => `[${lotto}]`,
   lottoSeperator: ', ',
-  resultTitle: `당첨통계\n---`,
+  resultTitle: `\n당첨통계\n---`,
   winningResult: (grade, gradeCount) =>
     `${GRADE[grade].duplicateCount}개 일치${GRADE[grade].extraText} (${GRADE[grade].prize}원) - ${gradeCount}개`,
   profitRate: (profitRate) => `총 수익률은 ${profitRate}%입니다.`,
