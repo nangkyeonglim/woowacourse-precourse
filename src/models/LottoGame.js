@@ -4,6 +4,13 @@ const Lotto = require('./Lotto');
 class LottoGame {
   #purchaseMoney;
   #lottos = [];
+  #grade = new Map([
+    ['fifth', 0],
+    ['fourth', 0],
+    ['third', 0],
+    ['second', 0],
+    ['first', 0],
+  ]);
 
   constructor(purchaseMoney) {
     this.#purchaseMoney = purchaseMoney;
@@ -21,6 +28,14 @@ class LottoGame {
   getLottosCount() {
     return this.#lottos.length;
   }
+
+  calculateWinningResult(winningNumber, bonusNumber) {
+    this.#lottos.forEach((lotto) =>
+      this.countGrade(lotto.calculateGrade(winningNumber, bonusNumber))
+    );
+  }
+
+  countGrade(grade) {}
 }
 
 module.exports = LottoGame;
