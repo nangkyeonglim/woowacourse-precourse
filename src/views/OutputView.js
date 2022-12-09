@@ -7,6 +7,10 @@ const OutputView = {
   printMap() {},
 
   printResult() {},
+
+  close() {
+    Console.close();
+  },
 };
 
 module.exports = OutputView;
