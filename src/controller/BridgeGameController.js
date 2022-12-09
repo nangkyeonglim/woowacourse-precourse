@@ -46,7 +46,16 @@ class BridgeGameController {
   }
 
   #readGameCommandPhase() {
-    InputView.readGameCommand(this.aa.bind(this));
+    InputView.readGameCommand(this.#handleRetryOrEndPhase.bind(this));
+  }
+
+  #handleRetryOrEndPhase(gameCommand) {
+    if (gameCommand === 'R') {
+      this.#bridgeGame.retry();
+      return this.#readMovingPhase();
+    }
+    OutputView.printResult(this.#bridgeGame.getResult());
+    return OutputView.close();
   }
 }
 
