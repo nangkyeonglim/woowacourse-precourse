@@ -1,3 +1,5 @@
+const { GRADE } = require('../constants/constants');
+
 class Lotto {
   #numbers;
 
@@ -22,13 +24,16 @@ class Lotto {
   }
 
   calculateGrade(winningNumber, bonusNumber) {
-    const duplicatedCount = this.countDuplicatedNumber(winningNumber);
-    if (duplicatedCount === 6) return 'first';
-    if (this.hasBonusNumber(bonusNumber) && duplicatedCount === 5)
-      return 'second';
-    if (duplicatedCount === 5) return 'third';
-    if (duplicatedCount === 4) return 'fourth';
-    if (duplicatedCount === 3) return 'fifth';
+    const count = this.countDuplicatedNumber(winningNumber);
+    if (count === GRADE.first.duplicateCount) return GRADE.first.name;
+    if (
+      this.hasBonusNumber(bonusNumber) &&
+      count === GRADE.second.duplicateCount
+    )
+      return GRADE.second.name;
+    if (count === GRADE.third.duplicateCount) return GRADE.third.name;
+    if (count === GRADE.fourth.duplicateCount) return GRADE.fourth.name;
+    if (count === GRADE.fifth.duplicateCount) return GRADE.fifth.name;
   }
 }
 
