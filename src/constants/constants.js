@@ -1,3 +1,5 @@
+const { localeString, roundToTwo } = require('../utils/utils');
+
 const LOTTO = Object.freeze({
   min: 1,
   max: 45,
@@ -50,8 +52,11 @@ const PRINT_MESSAGE = Object.freeze({
   lottoSeperator: ', ',
   resultTitle: `\n당첨통계\n---`,
   winningResult: (grade, gradeCount) =>
-    `${GRADE[grade].duplicateCount}개 일치${GRADE[grade].extraText} (${GRADE[grade].prize}원) - ${gradeCount}개`,
-  profitRate: (profitRate) => `총 수익률은 ${profitRate}%입니다.`,
+    `${GRADE[grade].duplicateCount}개 일치${
+      GRADE[grade].extraText
+    } (${localeString(GRADE[grade].prize)}원) - ${gradeCount}개`,
+  profitRate: (profitRate) =>
+    `총 수익률은 ${localeString(roundToTwo(profitRate))}%입니다.`,
 });
 
 module.exports = {
