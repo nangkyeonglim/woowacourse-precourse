@@ -19,7 +19,12 @@ class LottoGameController {
   }
 
   #readWinningNumberPhase() {
-    InputView.readWinningNumber();
+    InputView.readWinningNumber(this.#readBonusNumberPhase);
+  }
+
+  #readBonusNumberPhase(winningNumber) {
+    this.winningLotto = new Lotto(winningNumber);
+    InputView.readBonusNumber(this.#handleCalcutateResultPhase);
   }
 }
 
