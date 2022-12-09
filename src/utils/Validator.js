@@ -8,7 +8,9 @@ class Validator {
     if (!this.#isValidMoving(moving)) throw new Error();
   }
 
-  static checkGameCommand(gameCommand) {}
+  static checkGameCommand(gameCommand) {
+    if (!this.#isValidGameCommand(gameCommand)) throw new Error();
+  }
 
   static #isNumber(number) {
     const check = /^[0-9]+$/;
