@@ -29,7 +29,7 @@ class LottoGameController {
 
   #handleCalculateResultPhase(bonusNumber) {
     this.#lottoGame.calculateWinningResult(
-      this.winningLotto.getNumbers,
+      this.winningLotto.getNumbers(),
       bonusNumber
     );
   }
