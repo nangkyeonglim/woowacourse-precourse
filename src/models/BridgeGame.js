@@ -23,8 +23,13 @@ class BridgeGame {
       return this.#result.get(direction).push('O');
     this.#result.get(direction).push('X');
   }
+
   getResult() {
     return this.#result;
+  }
+
+  isGameEnd() {
+    return this.#currentPosition === this.#bridge.length - 1;
   }
 
   move() {
