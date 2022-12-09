@@ -9,7 +9,12 @@ const InputView = {
     Console.readLine('이동할 칸을 선택해주세요. (위: U, 아래: D)\n', callback);
   },
 
-  readGameCommand() {},
+  readGameCommand(callback) {
+    Console.readLine(
+      '게임을 다시 시도할지 여부를 입력해주세요. (재시도: R, 종료: Q)\n',
+      callback
+    );
+  },
 };
 
 module.exports = InputView;
