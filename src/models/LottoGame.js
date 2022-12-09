@@ -29,6 +29,10 @@ class LottoGame {
     return this.#lottos.length;
   }
 
+  getGrade() {
+    return this.#grade;
+  }
+
   calculateWinningResult(winningNumber, bonusNumber) {
     this.#lottos.forEach((lotto) =>
       this.countGrade(lotto.calculateGrade(winningNumber, bonusNumber))
