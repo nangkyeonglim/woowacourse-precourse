@@ -15,6 +15,14 @@ const OutputView = {
     Console.print(`당첨통계\n---`);
   },
 
+  printWinningResult(result) {
+    result.forEach((grade) => {
+      Console.print(
+        `${grade.일치}개 일치${grade.ExtraText} (${grade.금액}원) - ${grade.개수}개`
+      );
+    });
+  },
+
   printProfitRate(profitRate) {
     Console.print(`총 수익률은 ${profitRate}%입니다.`);
   },
