@@ -21,7 +21,15 @@ class Lotto {
     return this.#numbers.includes(bonusNumber);
   }
 
-  calculateGrade(winningNumber, bonusNumber) {}
+  calculateGrade(winningNumber, bonusNumber) {
+    const duplicatedCount = this.countDuplicatedNumber(winningNumber);
+    if (duplicatedCount === 6) return 'first';
+    if (this.hasBonusNumber(bonusNumber) && duplicatedCount === 5)
+      return 'second';
+    if (duplicatedCount === 5) return 'third';
+    if (duplicatedCount === 4) return 'fourth';
+    if (duplicatedCount === 3) return 'fifth';
+  }
 }
 
 module.exports = Lotto;
