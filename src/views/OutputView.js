@@ -1,30 +1,31 @@
 const { Console } = require('@woowacourse/mission-utils');
+const { PRINT_MESSAGE } = require('../constants/constants');
 
 const OutputView = {
   printLottoPurchaseCount(count) {
-    Console.print(`${count}개를 구매했습니다.`);
+    Console.print(PRINT_MESSAGE.lottoPurchaseCount(count));
   },
 
   printLottos(lottos) {
     lottos.forEach((lotto) => {
-      Console.print(`[${lotto.join(', ')}]`);
-    });
-  },
-
-  printResultTitle() {
-    Console.print(`당첨통계\n---`);
-  },
-
-  printWinningResult(result) {
-    result.forEach((grade) => {
       Console.print(
-        `${grade.일치}개 일치${grade.ExtraText} (${grade.금액}원) - ${grade.개수}개`
+        PRINT_MESSAGE.lottos(lotto.join(PRINT_MESSAGE.lottoSeperator))
       );
     });
   },
 
+  printResultTitle() {
+    Console.print(PRINT_MESSAGE.resultTitle);
+  },
+
+  printWinningResult(result) {
+    result.forEach((grade) => {
+      Console.print(PRINT_MESSAGE.winningResult(grade, gradeCount));
+    });
+  },
+
   printProfitRate(profitRate) {
-    Console.print(`총 수익률은 ${profitRate}%입니다.`);
+    Console.print(PRINT_MESSAGE.profitRate(profitRate));
   },
 };
 
