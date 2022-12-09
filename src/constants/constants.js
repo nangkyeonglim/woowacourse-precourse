@@ -6,26 +6,31 @@ const LOTTO = Object.freeze({
 
 const GRADE = {
   first: {
+    name: 'first',
     duplicateCount: 6,
     extraText: '',
     prize: 2_000_000_000,
   },
   second: {
+    name: 'second',
     duplicateCount: 5,
     extraText: ', 보너스 볼 일치',
     prize: 30_000_000,
   },
   third: {
+    name: 'third',
     duplicateCount: 5,
     extraText: '',
     prize: 1_500_000,
   },
   fourth: {
+    name: 'fourth',
     duplicateCount: 4,
     extraText: '',
     prize: 50_000,
   },
   fifth: {
+    name: 'fifth',
     duplicateCount: 3,
     extraText: '',
     prize: 5_000,
