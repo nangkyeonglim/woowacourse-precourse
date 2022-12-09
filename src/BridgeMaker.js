@@ -1,7 +1,9 @@
+const { COMMAND } = require('./constants/constants');
+
 const BridgeMaker = {
   makeBridge(size, generateRandomNumber) {
     return Array.from({ length: size }, () => {
-      return generateRandomNumber() ? 'U' : 'D';
+      return generateRandomNumber() ? COMMAND.up : COMMAND.down;
     });
   },
 };
