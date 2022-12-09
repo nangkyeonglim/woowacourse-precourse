@@ -1,4 +1,5 @@
 const { makeBridge } = require('../BridgeMaker');
+const { COMMAND } = require('../constants/constants');
 const BridgeGame = require('../models/BridgeGame');
 const BridgeRandomNumberGenerator = require('../utils/BridgeRandomNumberGenerator');
 const InputView = require('../views/InputView');
@@ -49,7 +50,7 @@ class BridgeGameController {
   }
 
   #handleRetryOrEndPhase(gameCommand) {
-    if (gameCommand === 'R') {
+    if (gameCommand === COMMAND.retry) {
       this.#bridgeGame.retry();
       return this.#readMovingPhase();
     }
