@@ -30,10 +30,10 @@ const ERROR = {
   invalidCommand: '[ERROR] 재시작: 1, 종료: 2 만 입력가능합니다',
 };
 
-module.exports = { 
-  GAME_COMMAND, 
-  GAME_RESULT, 
-  NUMBER, 
-  MESSAGE, 
+module.exports = {
+  GAME_COMMAND,
+  GAME_RESULT,
+  NUMBER,
+  MESSAGE,
   ERROR,
 };

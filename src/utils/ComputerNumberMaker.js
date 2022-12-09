@@ -1,14 +1,9 @@
 const ComputerNumberMaker = {
   makeComputerNumber(size, generateRandomNumber) {
-    const computer = [];
-    while (computer.length < size) {
-      const number = generateRandomNumber();
-      if (!computer.includes(number)) {
-        computer.push(number);
-      }
-    }
-    return computer;
-  }
-}
+    const computer = new Set();
+    while (computer.size < size) computer.add(generateRandomNumber());
+    return [...computer];
+  },
+};
 
 module.exports = ComputerNumberMaker;

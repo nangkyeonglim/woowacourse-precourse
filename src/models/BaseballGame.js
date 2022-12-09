@@ -1,4 +1,4 @@
-const { NUMBER } = require("../constants/constants");
+const { NUMBER } = require('../constants/constants');
 
 class BaseballGame {
   #computerNumber;
@@ -8,16 +8,18 @@ class BaseballGame {
     this.#computerNumber = computerNumber;
     this.#gameEnd = false;
   }
-  
+
   compareNumber(userNumber) {
     const result = {
       strike: 0,
       ball: 0,
     };
-    [...userNumber].map(char => Number(char)).forEach((num, index) => {
-      if (num === this.#computerNumber[index]) result.strike += 1;
-      else if (this.#computerNumber.includes(num)) result.ball += 1;
-    });
+    [...userNumber]
+      .map((char) => Number(char))
+      .forEach((num, index) => {
+        if (num === this.#computerNumber[index]) result.strike += 1;
+        else if (this.#computerNumber.includes(num)) result.ball += 1;
+      });
     this.changeGameEndStatus(result.strike);
     return result;
   }
