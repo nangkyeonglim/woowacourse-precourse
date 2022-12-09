@@ -14,6 +14,10 @@ class Lotto {
     }
   }
 
+  getNumbers() {
+    return this.#numbers;
+  }
+
   countDuplicatedNumber(winningNumber) {
     return this.#numbers.filter((number) => winningNumber.includes(number))
       .length;
