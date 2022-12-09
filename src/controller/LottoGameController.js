@@ -1,3 +1,4 @@
+const Lotto = require('../models/Lotto');
 const LottoGame = require('../models/LottoGame');
 const InputView = require('../views/InputView');
 const OutputView = require('../views/OutputView');
@@ -14,6 +15,11 @@ class LottoGameController {
     this.#lottoGame.issueLottos();
     OutputView.printLottoPurchaseCount(this.#lottoGame.getLottosCount());
     OutputView.printLottos(this.#lottoGame.getLottos());
+    this.#readWinningNumberPhase();
+  }
+
+  #readWinningNumberPhase() {
+    InputView.readWinningNumber();
   }
 }
 
