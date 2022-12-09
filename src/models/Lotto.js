@@ -12,7 +12,10 @@ class Lotto {
     }
   }
 
-  countDuplicatedNumber(winningNumber) {}
+  countDuplicatedNumber(winningNumber) {
+    return this.#numbers.filter((number) => winningNumber.includes(number))
+      .length;
+  }
 
   hasBonusNumber(bonusNumber) {}
 
