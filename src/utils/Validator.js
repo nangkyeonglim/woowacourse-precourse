@@ -1,15 +1,19 @@
+const { ERROR, BRIDGE, COMMAND } = require('../constants/constants');
+
 class Validator {
   static checkBridgeSize(size) {
-    if (!this.#isNumber(size)) throw new Error();
-    if (!this.#isRangeOfBridgeSize(size)) throw new Error();
+    if (!this.#isNumber(size)) throw new Error(ERROR.isNotNumber);
+    if (!this.#isRangeOfBridgeSize(size))
+      throw new Error(ERROR.invalidRangeOfBridgeSize);
   }
 
   static checkMoving(moving) {
-    if (!this.#isValidMoving(moving)) throw new Error();
+    if (!this.#isValidMoving(moving)) throw new Error(ERROR.invalidMoving);
   }
 
   static checkGameCommand(gameCommand) {
-    if (!this.#isValidGameCommand(gameCommand)) throw new Error();
+    if (!this.#isValidGameCommand(gameCommand))
+      throw new Error(ERROR.invalidGameCommand);
   }
 
   static #isNumber(number) {
@@ -18,15 +22,15 @@ class Validator {
   }
 
   static #isRangeOfBridgeSize(size) {
-    return size >= 3 && size <= 20;
+    return size >= BRIDGE.min && size <= BRIDGE.max;
   }
 
   static #isValidMoving(moving) {
-    return moving === 'U' || moving === 'D';
+    return moving === COMMAND.up || moving === COMMAND.down;
   }
 
   static #isValidGameCommand(gameCommand) {
-    return gameCommand === 'R' || gameCommand === 'Q';
+    return gameCommand === COMMAND.retry || gameCommand === COMMAND.quit;
   }
 }
 
