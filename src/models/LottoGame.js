@@ -17,6 +17,10 @@ class LottoGame {
   getLottos() {
     return this.#lottos.map((lotto) => lotto.getNumbers());
   }
+
+  getLottosCount() {
+    return this.#lottos.length;
+  }
 }
 
 module.exports = LottoGame;
