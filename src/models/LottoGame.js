@@ -39,6 +39,14 @@ class LottoGame {
     if (grade === undefined) return;
     this.#grade.set(grade, this.#grade.get(grade) + 1);
   }
+
+  calculateProfitRate() {
+    let prize = 0;
+    this.#grade.forEach((gradeCount, grade) => {
+      prize += gradeCount * GRADE[grade].prize;
+    });
+    return (prize / this.#purchaseMoney) * 100;
+  }
 }
 
 module.exports = LottoGame;
