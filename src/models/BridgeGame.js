@@ -1,5 +1,7 @@
+const { COMMAND, RESULT_MAP } = require('../constants/constants');
+
 class BridgeGame {
-  #bridge; // ['U', 'D', 'D']
+  #bridge;
   #currentPosition = 0;
   #result;
   #attempts = 1;
@@ -7,8 +9,8 @@ class BridgeGame {
   constructor(bridge) {
     this.#bridge = bridge;
     this.#result = new Map([
-      ['U', []],
-      ['D', []],
+      [COMMAND.up, []],
+      [COMMAND.down, []],
     ]);
   }
 
@@ -19,9 +21,12 @@ class BridgeGame {
   updateResult(moving) {
     Array.from(this.#result.keys())
       .filter((direction) => direction !== moving)
-      .forEach((direction) => this.#result.get(direction).push(' '));
-    if (this.isCorrectMoving(moving)) return this.#result.get(moving).push('O');
-    this.#result.get(moving).push('X');
+      .forEach((direction) =>
+        this.#result.get(direction).push(RESULT_MAP.empty)
+      );
+    if (this.isCorrectMoving(moving))
+      return this.#result.get(moving).push(RESULT_MAP.correct);
+    this.#result.get(moving).push(RESULT_MAP.wrong);
   }
 
   getResult() {
@@ -44,8 +49,8 @@ class BridgeGame {
     this.#attempts += 1;
     this.#currentPosition = 0;
     this.#result = new Map([
-      ['U', []],
-      ['D', []],
+      [COMMAND.up, []],
+      [COMMAND.down, []],
     ]);
   }
 }
