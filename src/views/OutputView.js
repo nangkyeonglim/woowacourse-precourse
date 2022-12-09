@@ -1,5 +1,6 @@
 const { Console } = require('@woowacourse/mission-utils');
 const { PRINT_MESSAGE } = require('../constants/constants');
+const { ascendingSort } = require('../utils/utils');
 
 const OutputView = {
   printLottoPurchaseCount(count) {
@@ -9,7 +10,9 @@ const OutputView = {
   printLottos(lottos) {
     lottos.forEach((lotto) => {
       Console.print(
-        PRINT_MESSAGE.lottos(lotto.join(PRINT_MESSAGE.lottoSeperator))
+        PRINT_MESSAGE.lottos(
+          ascendingSort(lotto).join(PRINT_MESSAGE.lottoSeperator)
+        )
       );
     });
   },
