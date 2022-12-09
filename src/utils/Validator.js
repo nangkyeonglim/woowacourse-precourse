@@ -4,7 +4,10 @@ class Validator {
     if (!this.#isRangeOfBridgeSize(size)) throw new Error();
   }
 
-  static checkMoving(moving) {}
+  static checkMoving(moving) {
+    if (!this.#isValidMoving(moving)) throw new Error();
+  }
+
   static checkGameCommand(gameCommand) {}
 
   static #isNumber(number) {
