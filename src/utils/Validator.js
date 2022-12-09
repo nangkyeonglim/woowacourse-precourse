@@ -8,7 +8,9 @@ class Validator {
     return check.test(num);
   }
 
-  static #isRangeOfBridgeSize(size) {}
+  static #isRangeOfBridgeSize(size) {
+    return size >= 3 && size <= 20;
+  }
   static #isValidMoving(moving) {}
   static #isValidGameCommand(gameCommand) {}
 }
