@@ -20,9 +20,8 @@ class BridgeGame {
     Array.from(this.#result.keys())
       .filter((direction) => direction !== moving)
       .forEach((direction) => this.#result.get(direction).push(' '));
-    if (this.isCorrectMoving(moving))
-      return this.#result.get(direction).push('O');
-    this.#result.get(direction).push('X');
+    if (this.isCorrectMoving(moving)) return this.#result.get(moving).push('O');
+    this.#result.get(moving).push('X');
   }
 
   getResult() {
