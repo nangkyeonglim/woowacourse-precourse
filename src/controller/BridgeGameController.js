@@ -2,36 +2,39 @@ const { makeBridge } = require('../BridgeMaker');
 const { COMMAND } = require('../constants/constants');
 const BridgeGame = require('../models/BridgeGame');
 const BridgeRandomNumberGenerator = require('../utils/BridgeRandomNumberGenerator');
-const InputView = require('../views/InputView');
-const OutputView = require('../views/OutputView');
 
 class BridgeGameController {
   #bridgeGame;
+  #view;
+
+  constructor(view) {
+    this.#view = view;
+  }
 
   start() {
-    OutputView.printInitialMessage();
+    this.#view.printInitialMessage();
     this.#readBridgeSizePhase();
   }
 
   #readBridgeSizePhase() {
-    InputView.readBridgeSize(this.#createBridgeGame.bind(this));
+    this.#view.readBridgeSize(this.#createBridgeGame.bind(this));
   }
 
   #createBridgeGame(size) {
     this.#bridgeGame = new BridgeGame(
       makeBridge(Number(size), BridgeRandomNumberGenerator.generate)
     );
-    OutputView.printNewLine();
+    this.#view.printNewLine();
     this.#readMovingPhase();
   }
 
   #readMovingPhase() {
-    InputView.readMoving(this.#checkAnswerPhase.bind(this));
+    this.#view.readMoving(this.#checkAnswerPhase.bind(this));
   }
 
   #checkAnswerPhase(moving) {
     this.#bridgeGame.updateResult(moving);
-    OutputView.printMap(this.#bridgeGame.getResult());
+    this.#view.printMap(this.#bridgeGame.getResult());
     if (this.#bridgeGame.isCorrectMoving(moving)) {
       return this.#correctAnswerPhase();
     }
@@ -47,7 +50,7 @@ class BridgeGameController {
   }
 
   #readGameCommandPhase() {
-    InputView.readGameCommand(this.#handleRetryOrEndPhase.bind(this));
+    this.#view.readGameCommand(this.#handleRetryOrEndPhase.bind(this));
   }
 
   #handleRetryOrEndPhase(gameCommand) {
@@ -59,12 +62,12 @@ class BridgeGameController {
   }
 
   #handleGameEndPhase(success) {
-    OutputView.printResult(
-      this.#bridgeGame.getResult(),
+    this.#view.printResult({
+      resultMap: this.#bridgeGame.getResult(),
       success,
-      this.#bridgeGame.getAttempts()
-    );
-    return OutputView.close();
+      attempts: this.#bridgeGame.getAttempts(),
+    });
+    return this.#view.close();
   }
 }
 

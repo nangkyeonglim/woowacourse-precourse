@@ -15,7 +15,7 @@ const OutputView = {
     this.printNewLine();
   },
 
-  printResult(resultMap, success, attempts) {
+  printResult({ resultMap, success, attempts }) {
     Console.print(OUTPUT_MESSAGE.resultTitle);
     this.printMap(resultMap);
     Console.print(OUTPUT_MESSAGE.success(success));
