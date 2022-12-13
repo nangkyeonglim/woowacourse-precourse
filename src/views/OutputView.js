@@ -24,6 +24,7 @@ const OutputView = {
 
   printErrorMessage(message) {
     Console.print(message);
+    this.printNewLine();
   },
 
   printNewLine() {
