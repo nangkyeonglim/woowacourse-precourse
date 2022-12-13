@@ -22,6 +22,10 @@ const OutputView = {
     Console.print(OUTPUT_MESSAGE.attempts(attempts));
   },
 
+  printErrorMessage(message) {
+    Console.print(message);
+  },
+
   printNewLine() {
     Console.print('');
   },
