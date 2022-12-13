@@ -1,3 +1,4 @@
+const Validator = require('../utils/Validator');
 const InputView = require('./InputView');
 const OutputView = require('./OutputView');
 
@@ -32,6 +33,10 @@ class View {
 
   printResult(object) {
     this.#output.printResult(object);
+  }
+
+  printErrorMessage(message) {
+    this.#output.printErrorMessage(message);
   }
 
   printNewLine() {
