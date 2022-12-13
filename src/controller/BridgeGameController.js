@@ -2,6 +2,7 @@ const { makeBridge } = require('../BridgeMaker');
 const { COMMAND } = require('../constants/constants');
 const BridgeGame = require('../models/BridgeGame');
 const BridgeRandomNumberGenerator = require('../utils/BridgeRandomNumberGenerator');
+const Validator = require('../utils/Validator');
 
 class BridgeGameController {
   #bridgeGame;
@@ -21,6 +22,7 @@ class BridgeGameController {
   }
 
   #createBridgeGame(size) {
+    Validator.checkBridgeSize(size);
     this.#bridgeGame = new BridgeGame(
       makeBridge(Number(size), BridgeRandomNumberGenerator.generate)
     );
@@ -33,6 +35,7 @@ class BridgeGameController {
   }
 
   #checkAnswerPhase(moving) {
+    Validator.checkMoving(moving);
     this.#bridgeGame.updateResult(moving);
     this.#view.printMap(this.#bridgeGame.getResult());
     if (this.#bridgeGame.isCorrectMoving(moving)) {
@@ -54,6 +57,7 @@ class BridgeGameController {
   }
 
   #handleRetryOrEndPhase(gameCommand) {
+    Validator.checkGameCommand(gameCommand);
     if (gameCommand === COMMAND.retry) {
       this.#bridgeGame.retry();
       return this.#readMovingPhase();
