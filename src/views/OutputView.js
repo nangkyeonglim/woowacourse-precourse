@@ -1,38 +1,36 @@
-const { Console } = require('@woowacourse/mission-utils');
 const { OUTPUT_MESSAGE, RESULT_MAP } = require('../constants/constants');
+const { print, close } = require('../utils/IO');
 
 const OutputView = {
   printInitialMessage() {
-    Console.print(OUTPUT_MESSAGE.initial);
+    print(OUTPUT_MESSAGE.initial);
   },
 
   printMap(resultMap) {
     resultMap.forEach((directionMap) => {
-      Console.print(
-        RESULT_MAP.printOneLine(directionMap.join(RESULT_MAP.seperator))
-      );
+      print(RESULT_MAP.printOneLine(directionMap.join(RESULT_MAP.seperator)));
     });
     this.printNewLine();
   },
 
   printResult({ resultMap, success, attempts }) {
-    Console.print(OUTPUT_MESSAGE.resultTitle);
+    print(OUTPUT_MESSAGE.resultTitle);
     this.printMap(resultMap);
-    Console.print(OUTPUT_MESSAGE.success(success));
-    Console.print(OUTPUT_MESSAGE.attempts(attempts));
+    print(OUTPUT_MESSAGE.success(success));
+    print(OUTPUT_MESSAGE.attempts(attempts));
   },
 
   printErrorMessage(message) {
-    Console.print(message);
+    print(message);
     this.printNewLine();
   },
 
   printNewLine() {
-    Console.print('');
+    print('');
   },
 
   close() {
-    Console.close();
+    close();
   },
 };
 
