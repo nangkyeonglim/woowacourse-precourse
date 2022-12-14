@@ -2,20 +2,20 @@ const { COMMAND, RESULT_MAP } = require('../constants/constants');
 
 class BridgeGame {
   #bridge;
-  #currentPosition = 0;
-  #result;
+
   #attempts = 1;
+
+  #result = new Map([
+    [COMMAND.up, []],
+    [COMMAND.down, []],
+  ]);
 
   constructor(bridge) {
     this.#bridge = bridge;
-    this.#result = new Map([
-      [COMMAND.up, []],
-      [COMMAND.down, []],
-    ]);
   }
 
   isCorrectMoving(moving) {
-    return this.#bridge[this.#currentPosition] === moving;
+    return this.#bridge.isCurrentPosition(moving);
   }
 
   updateResult(moving) {
@@ -38,16 +38,16 @@ class BridgeGame {
   }
 
   isGameEnd() {
-    return this.#currentPosition === this.#bridge.length - 1;
+    return this.#bridge.isBridgeEnd();
   }
 
   move() {
-    this.#currentPosition += 1;
+    this.#bridge.movePosition();
   }
 
   retry() {
+    this.#bridge.initializeCurrentPosition();
     this.#attempts += 1;
-    this.#currentPosition = 0;
     this.#result = new Map([
       [COMMAND.up, []],
       [COMMAND.down, []],
