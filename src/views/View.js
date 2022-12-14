@@ -1,6 +1,6 @@
-const Validator = require('../utils/Validator');
 const InputView = require('./InputView');
 const OutputView = require('./OutputView');
+const { handleError } = require('../utils/ErrorHandler');
 
 class View {
   #input;
@@ -12,15 +12,19 @@ class View {
   }
 
   readBridgeSize(callback) {
-    this.#input.readBridgeSize(callback);
+    this.#input.readBridgeSize(
+      handleError(this.readBridgeSize.bind(this), callback)
+    );
   }
 
   readMoving(callback) {
-    this.#input.readMoving(callback);
+    this.#input.readMoving(handleError(this.readMoving.bind(this), callback));
   }
 
   readGameCommand(callback) {
-    this.#input.readGameCommand(callback);
+    this.#input.readGameCommand(
+      handleError(this.readGameCommand.bind(this), callback)
+    );
   }
 
   printInitialMessage() {
