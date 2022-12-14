@@ -1,19 +1,27 @@
 const { ERROR, BRIDGE, COMMAND } = require('../constants/constants');
+const {
+  BridgeSizeError,
+  MovingError,
+  GameCommandError,
+  InvalidInputError,
+} = require('../errors/BridgeGameError');
 
 class Validator {
   static checkBridgeSize(size) {
-    if (!this.#isNumber(size)) throw new Error(ERROR.isNotNumber);
+    if (!this.#isNumber(size)) throw new InvalidInputError(ERROR.isNotNumber);
+
     if (!this.#isRangeOfBridgeSize(size))
-      throw new Error(ERROR.invalidRangeOfBridgeSize);
+      throw new BridgeSizeError(ERROR.invalidRangeOfBridgeSize);
   }
 
   static checkMoving(moving) {
-    if (!this.#isValidMoving(moving)) throw new Error(ERROR.invalidMoving);
+    if (!this.#isValidMoving(moving))
+      throw new MovingError(ERROR.invalidMoving);
   }
 
   static checkGameCommand(gameCommand) {
     if (!this.#isValidGameCommand(gameCommand))
-      throw new Error(ERROR.invalidGameCommand);
+      throw new GameCommandError(ERROR.invalidGameCommand);
   }
 
   static #isNumber(num) {
