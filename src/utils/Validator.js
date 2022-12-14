@@ -16,7 +16,7 @@ class Validator {
       throw new Error(ERROR.invalidGameCommand);
   }
 
-  static #isNumber(number) {
+  static #isNumber(num) {
     const check = /^[0-9]+$/;
     return check.test(num);
   }
